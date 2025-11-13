@@ -23,7 +23,7 @@ public class Video extends Contenido {
 
     @Override
     public void publicar() {
-        System.out.println("🎬 Publicando video: " + titulo + " (" + url + ")");
+        System.out.println("Publicando video: " + titulo + " (" + url + ")");
     }
 
     @Override

@@ -18,7 +18,6 @@ public abstract class Contenido {
     protected Categoria categoria;
     protected List<Etiqueta> etiquetas;
 
-    // 🔹 Constructor completo
     public Contenido(String titulo, String autor, Categoria categoria, List<Etiqueta> etiquetas) {
         this.titulo = titulo;
         this.autor = autor;
@@ -26,11 +25,9 @@ public abstract class Contenido {
         this.etiquetas = etiquetas;
     }
 
-    // Métodos abstractos que las subclases deben implementar
     public abstract void publicar();
     public abstract void mostrar();
 
-    // 🔸 Getters y setters opcionales
     public String getTitulo() { return titulo; }
     public String getAutor() { return autor; }
     public Categoria getCategoria() { return categoria; }

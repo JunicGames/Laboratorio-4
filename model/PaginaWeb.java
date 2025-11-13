@@ -33,22 +33,22 @@ public class PaginaWeb {
         for (Contenido c : contenidos) {
             if (c.getTitulo().equalsIgnoreCase(titulo)) {
                 c.setTitulo(nuevoTitulo);
-                System.out.println("✅ Contenido actualizado.");
+                System.out.println("Contenido actualizado.");
                 return;
             }
         }
-        System.out.println("⚠️ Contenido no encontrado.");
+        System.out.println("Contenido no encontrado.");
     }
 
     public void mostrarPagina() {
-        System.out.println("\n🌍 Página: " + nombre);
+        System.out.println("Página: " + nombre);
         for (Contenido c : contenidos) {
             c.mostrar();
         }
     }
 
     public void filtrarPorCategoria(String nombreCategoria) {
-        System.out.println("\n📂 Contenidos en categoría: " + nombreCategoria);
+        System.out.println("Contenidos en categoría: " + nombreCategoria);
         for (Contenido c : contenidos) {
             if (c.getCategoria().getNombre().equalsIgnoreCase(nombreCategoria)) {
                 c.mostrar();
@@ -57,7 +57,7 @@ public class PaginaWeb {
     }
 
     public void generarReporte() {
-        System.out.println("\n📊 Reporte de contenidos en " + nombre);
+        System.out.println("Reporte de contenidos en " + nombre);
         System.out.println("Total contenidos: " + contenidos.size());
         Map<String, Long> conteo = new HashMap<>();
         for (Contenido c : contenidos) {
