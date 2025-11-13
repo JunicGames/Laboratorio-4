@@ -1,3 +1,14 @@
+// Universidad del Valle de Guatemala
+// Facultad de Ingeniería
+// Programación Orientada a Objetos
+// Segundo Ciclo, 2025
+// Instructor: Ing. Erick Francisco Marroquín Rodríguez
+// Laboratorio 4: Polimorfismo
+// Julio Fernando Ortiz Alvarado – 251190
+// Naomi Saraí Marroquín López - 25226
+// Clase: PaginaWeb
+// Descripción: Es una página web dentro del CMS. administra, organiza y visualiza los contenidos de artículos, videos e imágenes. Ademas puede agregar, editar, eliminar, filtrar y generar reportes de contenidos.
+
 package model;
 
 import java.util.*;

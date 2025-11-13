@@ -1,3 +1,13 @@
+// Universidad del Valle de Guatemala
+// Facultad de Ingeniería
+// Programación Orientada a Objetos
+// Segundo Ciclo, 2025
+// Instructor: Ing. Erick Francisco Marroquín Rodríguez
+// Laboratorio 4: Polimorfismo
+// Julio Fernando Ortiz Alvarado – 251190
+// Naomi Saraí Marroquín López - 25226
+// Clase: Imagen
+// Descripción: Subclase de Contenido que representa las imágenes, con fuente o URL y su visualización en el CMS.
 package model;
 
 import java.util.List;
