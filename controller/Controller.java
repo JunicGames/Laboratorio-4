@@ -1,77 +1,52 @@
+// Universidad del Valle de Guatemala
+// Facultad de Ingeniería
+// Programación Orientada a Objetos
+// Segundo Ciclo, 2025
+// Instructor: Ing. Erick Francisco Marroquín Rodríguez
+// Laboratorio 4: Polimorfismo
+// Julio Fernando Ortiz Alvarado – 251190
+// Naomi Saraí Marroquín López - 25226
+// Clase: controller
+// Descripción: hace el control de usurario y el administrador
+
 package controller;
 
-import java.util.*;
-import model.*;
+import model.;
+import java.util.;
 
 public class Controller {
-    private final List<Contenido> contenidos = new ArrayList<>();
-    private final List<Usuario> usuarios = new ArrayList<>();
+    private List<PaginaWeb> paginas = new ArrayList<>();
+    private Usuario usuarioActual;
 
-    public void agregarUsuario(Usuario u) {
-        if (u != null && !usuarios.contains(u)) {
-            usuarios.add(u);
-            System.out.println("Usuario agregado: " + u.getNombre());
+    public boolean login(String nombre, String tipo) {
+        if (tipo.equalsIgnoreCase("admin")) {
+            usuarioActual = new Admin(nombre);
         } else {
-            System.out.println("Usuario inválido o ya existente.");
+            usuarioActual = new Editor(nombre);
+        }
+        System.out.println("Sesión iniciada como " + usuarioActual.getTipo() + ": " + usuarioActual.getNombre());
+        return true;
+    }
+
+    public Usuario getUsuarioActual() { return usuarioActual; }
+
+    public void crearPagina(String nombre) {
+        paginas.add(new PaginaWeb(nombre));
+        System.out.println("Página creada: " + nombre);
+    }
+
+    public PaginaWeb buscarPagina(String nombre) {
+        for (PaginaWeb p : paginas) {
+            if (p.getNombre().equalsIgnoreCase(nombre)) return p;
+        }
+        return null;
+    }
+
+    public void mostrarPaginas() {
+        for (PaginaWeb p : paginas) {
+            p.mostrarPagina();
         }
     }
 
-    public void crearContenido(Usuario u, String tipo, int id, String titulo, String descripcion, Categoria categoria) {
-        if (u == null) {
-            System.out.println("Error: usuario no válido.");
-            return;
-        }
-        Contenido c = u.crearContenido(tipo, id, titulo, descripcion, categoria);
-        if (c != null) {
-            contenidos.add(c);
-            System.out.println("Contenido creado: " + titulo);
-        } else {
-            System.out.println("Error al crear contenido.");
-        }
-    }
-
-    public void eliminarContenido(int id) {
-        boolean eliminado = contenidos.removeIf(c -> c.getId() == id);
-        if (eliminado)
-            System.out.println("Contenido con ID " + id + " eliminado.");
-        else
-            System.out.println("No se encontró contenido con ID " + id + ".");
-    }
-
-    public void listarContenidos() {
-        System.out.println("=== LISTA DE CONTENIDOS ===");
-        if (contenidos.isEmpty()) {
-            System.out.println("No hay contenidos registrados.");
-            return;
-        }
-        contenidos.forEach(c ->
-            System.out.println("- " + c.getTitulo() + " (" + c.getClass().getSimpleName() + ")")
-        );
-    }
-
-    public void filtrarPorCategoria(String cat) {
-        System.out.println("=== 🔍 Filtrando por categoría: " + cat + " ===");
-        contenidos.stream()
-            .filter(c -> c.getCategoria().getNombre().equalsIgnoreCase(cat))
-            .forEach(c -> System.out.println(c.getTitulo()));
-    }
-
-    public void filtrarPorTipo(String tipo) {
-        System.out.println("=== 🔍 Filtrando por tipo: " + tipo + " ===");
-        contenidos.stream()
-            .filter(c -> c.getClass().getSimpleName().equalsIgnoreCase(tipo))
-            .forEach(c -> System.out.println(c.getTitulo()));
-    }
-
-    public void publicar(Publicable c) {
-        if (c != null)
-            c.publicar();
-    }
-
-    public void generarReporte() {
-        System.out.println("=== 📊 REPORTE GENERAL ===");
-        System.out.println("Total de contenidos: " + contenidos.size());
-        long publicados = contenidos.stream().filter(c -> c instanceof Publicable).count();
-        System.out.println("Publicables: " + publicados);
-    }
+    public List<PaginaWeb> getPaginas() { return paginas; }
 }
