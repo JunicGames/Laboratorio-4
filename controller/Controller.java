@@ -8,11 +8,10 @@
 // Naomi Saraí Marroquín López - 25226
 // Clase: controller
 // Descripción: hace el control de usurario y el administrador
-
 package controller;
 
-import model.;
-import java.util.;
+import model.*;
+import java.util.*;
 
 public class Controller {
     private List<PaginaWeb> paginas = new ArrayList<>();
