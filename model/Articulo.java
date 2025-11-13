@@ -22,15 +22,16 @@ public class Articulo extends Contenido {
 
     @Override
     public void publicar() {
-        System.out.println("📘 Artículo publicado: " + titulo + " (" + categoria + ")");
+        System.out.println("Artículo publicado: " + titulo + " (" + categoria + ")");
     }
 
     @Override
     public void mostrar() {
-        System.out.println("\n📰 [ARTÍCULO] " + titulo);
+        System.out.println("[ARTÍCULO] " + titulo);
         System.out.println("Autor: " + autor);
         System.out.println("Categoría: " + categoria);
         System.out.println("Etiquetas: " + etiquetas);
         System.out.println("Texto: " + texto);
     }
+
 }
