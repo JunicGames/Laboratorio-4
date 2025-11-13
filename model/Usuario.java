@@ -1,21 +1,17 @@
 package model;
 
 public abstract class Usuario {
-    protected int id;
     protected String nombre;
-    protected String email;
+    protected String tipo; // "admin" o "editor"
 
-    public Usuario(int id, String nombre, String email) {
-        this.id = id;
+    public Usuario(String nombre, String tipo) {
         this.nombre = nombre;
-        this.email = email;
+        this.tipo = tipo;
     }
 
-    public abstract Contenido crearContenido(String tipo, int id, String titulo, String descripcion, Categoria categoria);
+    public String getNombre() { return nombre; }
+    public String getTipo() { return tipo; }
 
-    public void editarContenido(Contenido c, String nuevoTitulo, String nuevaDescripcion) {
-        c.titulo = nuevoTitulo;
-        c.descripcion = nuevaDescripcion;
-        System.out.println(nombre + " editó el contenido " + nuevoTitulo);
-    }
+    public abstract boolean puedeEliminar();
+    public abstract boolean puedePublicar();
 }

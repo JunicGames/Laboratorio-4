@@ -1,44 +1,33 @@
 package model;
 
-import java.util.*;
+import java.util.List;
 
-public abstract class Contenido implements Publicable {
-    private int id;
-    private String titulo;
-    private String descripcion;
-    private Date fechaPublicacion;
-    private Categoria categoria;
-    private final List<Etiqueta> etiquetas = new ArrayList<>();
+public abstract class Contenido {
+    protected String titulo;
+    protected String autor;
+    protected Categoria categoria;
+    protected List<Etiqueta> etiquetas;
 
-    public Contenido(int id, String titulo, String descripcion, Categoria categoria) {
-        this.id = id;
+    // 🔹 Constructor completo
+    public Contenido(String titulo, String autor, Categoria categoria, List<Etiqueta> etiquetas) {
         this.titulo = titulo;
-        this.descripcion = descripcion;
+        this.autor = autor;
         this.categoria = categoria;
-        this.fechaPublicacion = new Date();
+        this.etiquetas = etiquetas;
     }
 
-    public int getId() { return id; }
+    // Métodos abstractos que las subclases deben implementar
+    public abstract void publicar();
+    public abstract void mostrar();
+
+    // 🔸 Getters y setters opcionales
     public String getTitulo() { return titulo; }
-    public String getDescripcion() { return descripcion; }
+    public String getAutor() { return autor; }
     public Categoria getCategoria() { return categoria; }
-    public Date getFechaPublicacion() { return fechaPublicacion; }
+    public List<Etiqueta> getEtiquetas() { return etiquetas; }
 
     public void setTitulo(String titulo) { this.titulo = titulo; }
-    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
+    public void setAutor(String autor) { this.autor = autor; }
     public void setCategoria(Categoria categoria) { this.categoria = categoria; }
-
-    public void agregarEtiqueta(Etiqueta e) {
-        if (e != null && !etiquetas.contains(e))
-            etiquetas.add(e);
-    }
-
-    public void visualizar() {
-        System.out.println("Título: " + titulo);
-        System.out.println("Descripción: " + descripcion);
-        System.out.println("Categoría: " + categoria.getNombre());
-        System.out.println("Etiquetas:");
-        etiquetas.forEach(et -> System.out.println(" - " + et.getNombre()));
-        System.out.println("Fecha de publicación: " + fechaPublicacion);
-    }
+    public void setEtiquetas(List<Etiqueta> etiquetas) { this.etiquetas = etiquetas; }
 }

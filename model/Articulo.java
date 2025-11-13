@@ -1,12 +1,26 @@
 package model;
 
+import java.util.List;
+
 public class Articulo extends Contenido {
-    public Articulo(int id, String titulo, String descripcion, Categoria categoria) {
-        super(id, titulo, descripcion, categoria);
+    private String texto;
+
+    public Articulo(String titulo, String autor, Categoria categoria, List<Etiqueta> etiquetas, String texto) {
+        super(titulo, autor, categoria, etiquetas);
+        this.texto = texto;
     }
 
     @Override
     public void publicar() {
-        System.out.println("Publicando artículo: " + titulo);
+        System.out.println("📘 Artículo publicado: " + titulo + " (" + categoria + ")");
+    }
+
+    @Override
+    public void mostrar() {
+        System.out.println("\n📰 [ARTÍCULO] " + titulo);
+        System.out.println("Autor: " + autor);
+        System.out.println("Categoría: " + categoria);
+        System.out.println("Etiquetas: " + etiquetas);
+        System.out.println("Texto: " + texto);
     }
 }
