@@ -36,7 +36,7 @@ public class ConsoleView {
         iniciarSesion();
         int opcion;
         do {
-            System.out.println("\n=== MENÚ CMS ===");
+            System.out.println("MENÚ CMS");
             System.out.println("1. Crear nueva página");
             System.out.println("2. Agregar contenido");
             System.out.println("3. Editar contenido");
@@ -79,15 +79,21 @@ public class ConsoleView {
 
         System.out.print("Tipo de contenido (1: Artículo, 2: Imagen, 3: Video): ");
         int tipo = scanner.nextInt(); scanner.nextLine();
+
         System.out.print("Título: ");
         String titulo = scanner.nextLine();
+
         System.out.print("Autor: ");
         String autor = scanner.nextLine();
+
         System.out.print("Categoría: ");
         Categoria categoria = new Categoria(scanner.nextLine());
+
         System.out.print("Etiquetas (separadas por comas): ");
         String[] etiq = scanner.nextLine().split(",");
+
         List<Etiqueta> etiquetas = new ArrayList<>();
+
         for (String e : etiq) etiquetas.add(new Etiqueta(e.trim()));
 
         switch (tipo) {
@@ -95,16 +101,19 @@ public class ConsoleView {
                 System.out.print("Texto del artículo: ");
                 String texto = scanner.nextLine();
                 pagina.agregarContenido(new Articulo(titulo, autor, categoria, etiquetas, texto));
+
             }
             case 2 -> {
                 System.out.print("URL de la imagen: ");
                 String url = scanner.nextLine();
                 pagina.agregarContenido(new Imagen(titulo, autor, categoria, etiquetas, url));
+
             }
             case 3 -> {
                 System.out.print("Link del video: ");
                 String enlace = scanner.nextLine();
                 pagina.agregarContenido(new Video(titulo, autor, categoria, etiquetas, enlace));
+
             }
             default -> System.out.println("Tipo inválido.");
         }
@@ -114,6 +123,7 @@ public class ConsoleView {
         System.out.print("Página: ");
         String pagina = scanner.nextLine();
         PaginaWeb p = controller.buscarPagina(pagina);
+        
         if (p == null) return;
         System.out.print("Título del contenido a editar: ");
         String t = scanner.nextLine();
